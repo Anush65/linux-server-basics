@@ -10,3 +10,9 @@ This project demonstrates basic Linux server setup using WSL.
 ## Tech
 - Ubuntu (WSL)
 - Nginx
+
+## What I learned
+- How Linux services are managed with systemctl
+- Where Nginx stores configs, logs, and site files
+- How to inspect logs for live traffic
+- Why permissions matter in Linux
