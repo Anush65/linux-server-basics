@@ -1,0 +1,10 @@
+# TLS / certificates
+certs/
+letsencrypt/
+
+# Docker / runtime
+*.log
+__pycache__/
+
+# OS / editor
+.DS_Store

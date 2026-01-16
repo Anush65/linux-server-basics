@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    networks:
+      - internal
+    restart: unless-stopped
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./certs:/etc/nginx/certs:ro
+      - ./letsencrypt:/etc/letsencrypt
+      - ./webroot:/var/www/certbot
+    depends_on:
+      - backend
+    networks:
+      - internal
+    restart: unless-stopped
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./letsencrypt:/etc/letsencrypt
+      - ./webroot:/var/www/certbot
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge
