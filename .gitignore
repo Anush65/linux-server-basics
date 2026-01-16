@@ -1,10 +1,15 @@
-# TLS / certificates
+# AWS / CLI junk
+aws/
+awscliv2.zip
+
+# Shared libraries
+*.so*
+*.zip
+
+# Python / misc
+__pycache__/
+
+# TLS / secrets
 certs/
 letsencrypt/
 
-# Docker / runtime
-*.log
-__pycache__/
-
-# OS / editor
-.DS_Store
