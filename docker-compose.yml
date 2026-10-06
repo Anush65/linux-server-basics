@@ -1,8 +1,32 @@
-version: "3.9"
-
 services:
+
   backend:
     build: ./backend
+    environment:
+      DB_HOST: db
+      DB_NAME: deployguard
+      DB_USER: admin
+      DB_PASSWORD: admin123
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - internal
+    restart: unless-stopped
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: deployguard
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d deployguard"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     networks:
       - internal
     restart: unless-stopped
@@ -11,25 +35,15 @@ services:
     build: ./nginx
     ports:
       - "80:80"
-      - "443:443"
-    volumes:
-      - ./certs:/etc/nginx/certs:ro
-      - ./letsencrypt:/etc/letsencrypt
-      - ./webroot:/var/www/certbot
     depends_on:
       - backend
     networks:
       - internal
     restart: unless-stopped
 
-  certbot:
-    image: certbot/certbot
-    volumes:
-      - ./letsencrypt:/etc/letsencrypt
-      - ./webroot:/var/www/certbot
-    networks:
-      - internal
-
 networks:
   internal:
     driver: bridge
+
+volumes:
+  postgres_data:
