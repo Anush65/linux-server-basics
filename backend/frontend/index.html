@@ -10,84 +10,56 @@
     content="width=device-width, initial-scale=1.0"
 >
 
-<title>
-    DeployGuard — Cloud Application Platform
-</title>
-
+<title>DeployGuard</title>
 
 <style>
 
 @import url(
-    'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap'
+'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap'
 );
 
-
 :root {
-
-    --bg: #080b12;
-
-    --panel: #0f141f;
-
-    --panel-light: #151b28;
-
-    --border: #202938;
-
-    --text: #f4f7fb;
-
-    --muted: #8d98aa;
-
-    --blue: #5b8cff;
-
-    --blue-dark: #3b6ee8;
-
-    --green: #35d39a;
-
-    --red: #ff6b7a;
-
-    --yellow: #f5c451;
-
-    --purple: #9b7cff;
-
+    --bg:#080b12;
+    --panel:#0f141f;
+    --panel2:#151b28;
+    --border:#202938;
+    --text:#f4f7fb;
+    --muted:#8d98aa;
+    --blue:#5b8cff;
+    --blue2:#3b6ee8;
+    --green:#35d39a;
+    --red:#ff6b7a;
+    --yellow:#f5c451;
+    --purple:#9b7cff;
 }
-
 
 * {
-
-    box-sizing: border-box;
-
-    margin: 0;
-
-    padding: 0;
-
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
+html {
+    scroll-behavior:smooth;
+}
 
 body {
-
     background:
-
         radial-gradient(
             circle at 15% 0%,
             rgba(91,140,255,.12),
             transparent 30%
         ),
-
         radial-gradient(
             circle at 85% 10%,
-            rgba(155,124,255,.10),
+            rgba(155,124,255,.08),
             transparent 25%
         ),
-
         var(--bg);
 
-    color: var(--text);
-
-    font-family:
-        "DM Sans",
-        sans-serif;
-
-    min-height: 100vh;
-
+    color:var(--text);
+    font-family:"DM Sans",sans-serif;
+    min-height:100vh;
 }
 
 
@@ -96,191 +68,100 @@ body {
 ========================================================= */
 
 .sidebar {
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+    width:245px;
 
-    position: fixed;
+    background:rgba(10,14,22,.96);
+    border-right:1px solid var(--border);
 
-    left: 0;
+    padding:28px 18px;
 
-    top: 0;
+    display:flex;
+    flex-direction:column;
 
-    bottom: 0;
-
-    width: 245px;
-
-    background:
-        rgba(10,14,22,.94);
-
-    border-right:
-        1px solid var(--border);
-
-    padding:
-        28px 18px;
-
-    display: flex;
-
-    flex-direction: column;
-
+    z-index:20;
 }
-
 
 .logo {
+    padding:0 6px 35px;
 
-    padding:
-        0 6px 35px;
-
-    font-family:
-        "Space Grotesk";
-
-    font-size:
-        22px;
-
-    font-weight:
-        700;
-
+    font-family:"Space Grotesk";
+    font-size:22px;
+    font-weight:700;
 }
-
 
 .logo span {
-
-    color:
-        var(--blue);
-
+    color:var(--blue);
 }
-
 
 .nav-title {
+    color:#596577;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1.5px;
 
-    color:
-        #596577;
-
-    font-size:
-        11px;
-
-    font-weight:
-        700;
-
-    letter-spacing:
-        1.5px;
-
-    padding:
-        0 12px 10px;
-
+    padding:0 12px 10px;
 }
-
 
 .nav-item {
+    padding:12px 13px;
+    margin-bottom:4px;
 
-    padding:
-        12px 13px;
+    border-radius:9px;
 
-    margin-bottom:
-        4px;
+    color:var(--muted);
+    font-size:14px;
 
-    border-radius:
-        9px;
+    cursor:pointer;
 
-    color:
-        var(--muted);
-
-    font-size:
-        14px;
-
-    cursor:
-        pointer;
-
+    transition:.2s;
 }
-
-
-.nav-item.active {
-
-    color:
-        white;
-
-    background:
-        rgba(91,140,255,.12);
-
-}
-
 
 .nav-item:hover {
-
-    background:
-        rgba(255,255,255,.04);
-
-    color:
-        white;
-
+    background:rgba(255,255,255,.04);
+    color:white;
 }
 
+.nav-item.active {
+    color:white;
+    background:rgba(91,140,255,.13);
+}
 
 .sidebar-bottom {
+    margin-top:auto;
 
-    margin-top:
-        auto;
+    padding:15px;
 
-    padding:
-        15px;
+    border:1px solid var(--border);
+    border-radius:12px;
 
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        12px;
-
-    background:
-        rgba(255,255,255,.02);
-
+    background:rgba(255,255,255,.02);
 }
-
 
 .sidebar-bottom small {
-
-    color:
-        var(--muted);
-
-    display:
-        block;
-
-    margin-bottom:
-        8px;
-
+    color:var(--muted);
+    display:block;
+    margin-bottom:8px;
 }
-
 
 .system-status {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        8px;
-
-    font-size:
-        13px;
-
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
 }
 
-
 .dot {
+    width:8px;
+    height:8px;
 
-    width:
-        8px;
+    background:var(--green);
+    border-radius:50%;
 
-    height:
-        8px;
-
-    background:
-        var(--green);
-
-    border-radius:
-        50%;
-
-    box-shadow:
-        0 0 10px rgba(53,211,154,.6);
-
+    box-shadow:0 0 10px rgba(53,211,154,.6);
 }
 
 
@@ -289,78 +170,42 @@ body {
 ========================================================= */
 
 .main {
-
-    margin-left:
-        245px;
-
-    padding:
-        32px 42px;
-
-    max-width:
-        1500px;
-
+    margin-left:245px;
+    padding:32px 42px;
+    max-width:1500px;
 }
 
+.page-section {
+    scroll-margin-top:30px;
+}
 
 .topbar {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    align-items:
-        center;
-
-    margin-bottom:
-        35px;
-
+    margin-bottom:35px;
 }
-
 
 .page-title h1 {
-
-    font-family:
-        "Space Grotesk";
-
-    font-size:
-        28px;
-
-    margin-bottom:
-        6px;
-
+    font-family:"Space Grotesk";
+    font-size:28px;
+    margin-bottom:6px;
 }
-
 
 .page-title p {
-
-    color:
-        var(--muted);
-
-    font-size:
-        14px;
-
+    color:var(--muted);
+    font-size:14px;
 }
 
-
 .region {
+    padding:9px 14px;
 
-    padding:
-        9px 14px;
+    border:1px solid var(--border);
+    border-radius:8px;
 
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        8px;
-
-    color:
-        var(--muted);
-
-    font-size:
-        12px;
-
+    color:var(--muted);
+    font-size:12px;
 }
 
 
@@ -369,200 +214,108 @@ body {
 ========================================================= */
 
 .stats {
-
-    display:
-        grid;
-
+    display:grid;
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(4,1fr);
 
-    gap:
-        16px;
-
-    margin-bottom:
-        25px;
-
+    gap:16px;
+    margin-bottom:25px;
 }
-
 
 .stat-card {
+    background:rgba(15,20,31,.85);
 
-    background:
-        rgba(15,20,31,.85);
+    border:1px solid var(--border);
+    border-radius:14px;
 
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        14px;
-
-    padding:
-        22px;
-
+    padding:22px;
 }
-
 
 .stat-label {
-
-    color:
-        var(--muted);
-
-    font-size:
-        13px;
-
-    margin-bottom:
-        12px;
-
+    color:var(--muted);
+    font-size:13px;
+    margin-bottom:12px;
 }
-
 
 .stat-value {
-
-    font-family:
-        "Space Grotesk";
-
-    font-size:
-        30px;
-
-    font-weight:
-        700;
-
+    font-family:"Space Grotesk";
+    font-size:30px;
+    font-weight:700;
 }
-
 
 .stat-sub {
-
-    margin-top:
-        7px;
-
-    color:
-        var(--green);
-
-    font-size:
-        12px;
-
+    margin-top:7px;
+    color:var(--green);
+    font-size:12px;
 }
 
 
 /* =========================================================
-   CONTENT
+   PANELS
 ========================================================= */
 
-.content-grid {
-
-    display:
-        grid;
-
-    grid-template-columns:
-        1.5fr 1fr;
-
-    gap:
-        20px;
-
-}
-
-
 .panel {
+    background:rgba(15,20,31,.85);
 
-    background:
-        rgba(15,20,31,.85);
+    border:1px solid var(--border);
+    border-radius:14px;
 
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        14px;
-
-    padding:
-        24px;
-
+    padding:24px;
 }
-
 
 .panel-header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    align-items:
-        center;
-
-    margin-bottom:
-        20px;
-
+    margin-bottom:20px;
 }
-
 
 .panel-header h2 {
-
-    font-family:
-        "Space Grotesk";
-
-    font-size:
-        17px;
-
+    font-family:"Space Grotesk";
+    font-size:18px;
 }
 
-
 .panel-header span {
-
-    color:
-        var(--muted);
-
-    font-size:
-        12px;
-
+    color:var(--muted);
+    font-size:12px;
 }
 
 
 /* =========================================================
-   APPLICATIONS
+   APPLICATION LIST
 ========================================================= */
 
 .application {
+    display:flex;
+    align-items:center;
+    gap:15px;
 
-    display:
-        flex;
+    padding:16px 12px;
 
-    align-items:
-        center;
+    border-bottom:1px solid var(--border);
 
-    gap:
-        15px;
+    cursor:pointer;
+    border-radius:10px;
 
-    padding:
-        15px 0;
-
-    border-bottom:
-        1px solid var(--border);
-
+    transition:.2s;
 }
 
+.application:hover {
+    background:rgba(91,140,255,.06);
+}
 
 .application:last-child {
-
-    border-bottom:
-        none;
-
+    border-bottom:none;
 }
 
-
 .avatar {
+    width:44px;
+    height:44px;
 
-    width:
-        42px;
+    flex-shrink:0;
 
-    height:
-        42px;
-
-    flex-shrink:
-        0;
-
-    border-radius:
-        10px;
+    border-radius:11px;
 
     background:
         linear-gradient(
@@ -571,142 +324,57 @@ body {
             var(--purple)
         );
 
-    display:
-        flex;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    align-items:
-        center;
+    font-weight:700;
 
-    justify-content:
-        center;
-
-    font-weight:
-        700;
-
-    overflow:
-        hidden;
-
+    overflow:hidden;
 }
-
 
 .avatar img {
-
-    width:
-        100%;
-
-    height:
-        100%;
-
-    object-fit:
-        cover;
-
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
-
 
 .app-info {
-
-    flex:
-        1;
-
-    min-width:
-        0;
-
+    flex:1;
+    min-width:0;
 }
-
 
 .app-name {
-
-    font-weight:
-        600;
-
-    font-size:
-        14px;
-
+    font-weight:600;
+    font-size:14px;
 }
-
 
 .app-meta {
-
-    color:
-        var(--muted);
-
-    font-size:
-        12px;
-
-    margin-top:
-        4px;
-
+    color:var(--muted);
+    font-size:12px;
+    margin-top:4px;
 }
 
-
-.repository-link {
-
-    display:
-        inline-block;
-
-    margin-top:
-        6px;
-
-    color:
-        var(--blue);
-
-    font-size:
-        11px;
-
-    text-decoration:
-        none;
-
+.app-arrow {
+    color:var(--muted);
+    font-size:18px;
 }
-
-
-.repository-link:hover {
-
-    text-decoration:
-        underline;
-
-}
-
 
 .status {
+    display:flex;
+    align-items:center;
+    gap:6px;
 
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        6px;
-
-    color:
-        var(--green);
-
-    font-size:
-        12px;
-
-    font-weight:
-        600;
-
-    white-space:
-        nowrap;
-
+    color:var(--green);
+    font-size:12px;
+    font-weight:600;
 }
 
-
 .status-dot {
-
-    width:
-        6px;
-
-    height:
-        6px;
-
-    background:
-        var(--green);
-
-    border-radius:
-        50%;
-
+    width:6px;
+    height:6px;
+    background:var(--green);
+    border-radius:50%;
 }
 
 
@@ -715,136 +383,80 @@ body {
 ========================================================= */
 
 .infrastructure-item {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
-    display:
-        flex;
+    padding:14px 0;
 
-    justify-content:
-        space-between;
-
-    align-items:
-        center;
-
-    padding:
-        14px 0;
-
-    border-bottom:
-        1px solid var(--border);
-
+    border-bottom:1px solid var(--border);
 }
-
 
 .infrastructure-item:last-child {
-
-    border-bottom:
-        none;
-
+    border-bottom:none;
 }
-
 
 .service {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        12px;
-
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
-
 
 .service-icon {
+    width:35px;
+    height:35px;
 
-    width:
-        34px;
+    border-radius:8px;
 
-    height:
-        34px;
+    background:var(--panel2);
 
-    border-radius:
-        8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    background:
-        var(--panel-light);
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    font-size:
-        12px;
-
-    font-weight:
-        600;
-
+    font-size:11px;
+    font-weight:600;
 }
-
 
 .service-name {
-
-    font-size:
-        13px;
-
-    font-weight:
-        600;
-
+    font-size:13px;
+    font-weight:600;
 }
-
 
 .service-description {
-
-    color:
-        var(--muted);
-
-    font-size:
-        11px;
-
-    margin-top:
-        3px;
-
+    color:var(--muted);
+    font-size:11px;
+    margin-top:3px;
 }
-
 
 .infrastructure-status {
+    font-size:12px;
+}
 
-    font-size:
-        12px;
+.healthy {
+    color:var(--green);
+}
 
-    font-weight:
-        500;
+.warning {
+    color:var(--yellow);
+}
 
+.error {
+    color:var(--red);
 }
 
 
-.infrastructure-status.healthy {
+/* =========================================================
+   TWO COLUMN
+========================================================= */
 
-    color:
-        var(--green);
+.content-grid {
+    display:grid;
 
-}
+    grid-template-columns:
+        1.5fr 1fr;
 
-
-.infrastructure-status.warning {
-
-    color:
-        var(--yellow);
-
-}
-
-
-.infrastructure-status.error {
-
-    color:
-        var(--red);
-
+    gap:20px;
 }
 
 
@@ -853,303 +465,268 @@ body {
 ========================================================= */
 
 .register {
-
-    margin-top:
-        20px;
-
+    margin-top:20px;
 }
 
-
 .form-grid {
-
-    display:
-        grid;
+    display:grid;
 
     grid-template-columns:
         1fr 1fr;
 
-    gap:
-        15px;
-
+    gap:15px;
 }
-
 
 .field {
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    gap:
-        7px;
-
+    display:flex;
+    flex-direction:column;
+    gap:7px;
 }
-
 
 .field.full {
-
-    grid-column:
-        1 / -1;
-
+    grid-column:1 / -1;
 }
-
 
 .field label {
-
-    color:
-        var(--muted);
-
-    font-size:
-        12px;
-
+    color:var(--muted);
+    font-size:12px;
 }
-
 
 .field input,
 .field select {
+    width:100%;
 
-    width:
-        100%;
+    padding:11px 12px;
 
-    padding:
-        11px 12px;
+    background:#0b1019;
+    color:white;
 
-    background:
-        #0b1019;
+    border:1px solid var(--border);
+    border-radius:8px;
 
-    color:
-        white;
+    outline:none;
 
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        8px;
-
-    outline:
-        none;
-
-    font-family:
-        inherit;
-
+    font-family:inherit;
 }
-
 
 .field input:focus,
 .field select:focus {
-
-    border-color:
-        var(--blue);
-
+    border-color:var(--blue);
 }
-
 
 .file-input {
-
-    padding:
-        9px !important;
-
+    padding:9px !important;
 }
-
 
 .register-button {
+    margin-top:18px;
 
-    margin-top:
-        18px;
+    padding:12px 20px;
 
-    padding:
-        12px 20px;
+    border:none;
+    border-radius:8px;
 
-    border:
-        none;
+    background:var(--blue);
+    color:white;
 
-    border-radius:
-        8px;
+    font-family:inherit;
+    font-weight:600;
 
-    background:
-        var(--blue);
-
-    color:
-        white;
-
-    font-family:
-        inherit;
-
-    font-weight:
-        600;
-
-    cursor:
-        pointer;
-
+    cursor:pointer;
 }
-
 
 .register-button:hover {
-
-    background:
-        var(--blue-dark);
-
+    background:var(--blue2);
 }
-
 
 .register-button:disabled {
-
-    opacity:
-        .5;
-
-    cursor:
-        not-allowed;
-
+    opacity:.5;
+    cursor:not-allowed;
 }
-
 
 .message {
+    margin-top:15px;
 
-    margin-top:
-        15px;
+    padding:11px;
 
-    padding:
-        11px;
+    border-radius:8px;
 
-    border-radius:
-        8px;
+    display:none;
 
-    display:
-        none;
-
-    font-size:
-        12px;
-
+    font-size:12px;
 }
-
 
 .success {
+    display:block;
 
-    display:
-        block;
+    background:rgba(53,211,154,.1);
+    color:var(--green);
 
-    background:
-        rgba(53,211,154,.1);
-
-    color:
-        var(--green);
-
-    border:
-        1px solid rgba(53,211,154,.2);
-
+    border:1px solid rgba(53,211,154,.2);
 }
 
-
 .error {
+    display:block;
 
-    display:
-        block;
+    background:rgba(255,107,122,.1);
+    color:var(--red);
 
-    background:
-        rgba(255,107,122,.1);
-
-    color:
-        var(--red);
-
-    border:
-        1px solid rgba(255,107,122,.2);
-
+    border:1px solid rgba(255,107,122,.2);
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   DETAILS
+========================================================= */
+
+.details-panel {
+    display:none;
+    margin-top:20px;
+}
+
+.details-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+}
+
+.detail-box {
+    background:#0b1019;
+
+    border:1px solid var(--border);
+    border-radius:10px;
+
+    padding:15px;
+}
+
+.detail-label {
+    color:var(--muted);
+    font-size:11px;
+    margin-bottom:6px;
+}
+
+.detail-value {
+    font-size:14px;
+    font-weight:600;
+
+    word-break:break-word;
+}
+
+.repo-button {
+    display:inline-block;
+
+    margin-top:18px;
+
+    padding:10px 15px;
+
+    border-radius:8px;
+
+    background:var(--blue);
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:13px;
+}
+
+
+/* =========================================================
+   INFO SECTIONS
+========================================================= */
+
+.info-grid {
+    display:grid;
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:15px;
+}
+
+.info-card {
+    background:#0b1019;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    padding:18px;
+}
+
+.info-card h3 {
+    font-family:"Space Grotesk";
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+.info-card p {
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   MOBILE
 ========================================================= */
 
 @media(max-width:1000px) {
 
     .sidebar {
-
-        width:
-            70px;
-
+        width:70px;
     }
 
     .logo {
-
-        font-size:
-            0;
-
+        font-size:0;
     }
 
     .logo span {
-
-        font-size:
-            20px;
-
+        font-size:20px;
     }
 
     .nav-item {
-
-        font-size:
-            0;
-
-        text-align:
-            center;
-
+        font-size:0;
+        text-align:center;
     }
 
     .main {
-
-        margin-left:
-            70px;
-
+        margin-left:70px;
     }
 
     .stats {
-
-        grid-template-columns:
-            1fr 1fr;
-
+        grid-template-columns:1fr 1fr;
     }
 
     .content-grid {
-
-        grid-template-columns:
-            1fr;
-
+        grid-template-columns:1fr;
     }
 
+    .info-grid {
+        grid-template-columns:1fr;
+    }
 }
-
 
 @media(max-width:650px) {
 
     .main {
-
-        padding:
-            22px;
-
+        padding:22px;
     }
 
     .stats {
-
-        grid-template-columns:
-            1fr;
-
+        grid-template-columns:1fr;
     }
 
     .form-grid {
-
-        grid-template-columns:
-            1fr;
-
+        grid-template-columns:1fr;
     }
 
     .field.full {
-
-        grid-column:
-            auto;
-
+        grid-column:auto;
     }
 
+    .details-grid {
+        grid-template-columns:1fr;
+    }
 }
 
 </style>
@@ -1176,19 +753,34 @@ body {
     </div>
 
 
-    <div class="nav-item active">
+    <div
+        class="nav-item active"
+        onclick="navigateTo('dashboard')"
+    >
         Dashboard
     </div>
 
-    <div class="nav-item">
+
+    <div
+        class="nav-item"
+        onclick="navigateTo('applications')"
+    >
         Applications
     </div>
 
-    <div class="nav-item">
+
+    <div
+        class="nav-item"
+        onclick="navigateTo('infrastructure')"
+    >
         Infrastructure
     </div>
 
-    <div class="nav-item">
+
+    <div
+        class="nav-item"
+        onclick="navigateTo('monitoring')"
+    >
         Monitoring
     </div>
 
@@ -1201,15 +793,26 @@ body {
     </div>
 
 
-    <div class="nav-item">
+    <div
+        class="nav-item"
+        onclick="navigateTo('storage')"
+    >
         Storage
     </div>
 
-    <div class="nav-item">
+
+    <div
+        class="nav-item"
+        onclick="navigateTo('database')"
+    >
         Database
     </div>
 
-    <div class="nav-item">
+
+    <div
+        class="nav-item"
+        onclick="navigateTo('security')"
+    >
         Security
     </div>
 
@@ -1240,7 +843,15 @@ body {
 <main class="main">
 
 
-    <!-- TOP BAR -->
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<section
+    id="dashboard"
+    class="page-section"
+>
+
 
     <div class="topbar">
 
@@ -1251,24 +862,20 @@ body {
             </h1>
 
             <p>
-                Monitor your applications and cloud infrastructure.
+                Monitor applications and cloud infrastructure.
             </p>
 
         </div>
 
 
         <div class="region">
-
             AWS · ap-south-2
-
         </div>
 
     </div>
 
 
-    <!-- =================================================
-         STATISTICS
-    ================================================= -->
+    <!-- STATS -->
 
     <section class="stats">
 
@@ -1362,16 +969,15 @@ body {
     </section>
 
 
-    <!-- =================================================
-         APPLICATIONS + INFRASTRUCTURE
-    ================================================= -->
+    <!-- APPLICATION + INFRASTRUCTURE PREVIEW -->
 
     <section class="content-grid">
 
 
-        <!-- APPLICATIONS -->
-
-        <div class="panel">
+        <div
+            class="panel page-section"
+            id="applications"
+        >
 
             <div class="panel-header">
 
@@ -1386,7 +992,7 @@ body {
             </div>
 
 
-            <div id="applications">
+            <div id="applicationsList">
 
                 Loading applications...
 
@@ -1395,9 +1001,10 @@ body {
         </div>
 
 
-        <!-- INFRASTRUCTURE -->
-
-        <div class="panel">
+        <div
+            class="panel page-section"
+            id="infrastructure"
+        >
 
             <div class="panel-header">
 
@@ -1412,7 +1019,7 @@ body {
             </div>
 
 
-            <div id="infrastructure">
+            <div id="infrastructureList">
 
                 Checking infrastructure...
 
@@ -1424,12 +1031,9 @@ body {
     </section>
 
 
-    <!-- =================================================
-         REGISTER APPLICATION
-    ================================================= -->
+    <!-- REGISTER -->
 
     <section class="panel register">
-
 
         <div class="panel-header">
 
@@ -1438,7 +1042,7 @@ body {
             </h2>
 
             <span>
-                Add an application to DeployGuard
+                Add an application
             </span>
 
         </div>
@@ -1580,15 +1184,382 @@ body {
     </section>
 
 
+    <!-- APPLICATION DETAILS -->
+
+    <section
+        id="applicationDetails"
+        class="panel details-panel"
+    >
+
+        <div class="panel-header">
+
+            <h2>
+                Application Details
+            </h2>
+
+            <span>
+                Selected application
+            </span>
+
+        </div>
+
+
+        <div
+            id="detailsContent"
+            class="details-grid"
+        ></div>
+
+    </section>
+
+
+</section>
+
+
+<!-- =====================================================
+     MONITORING
+===================================================== -->
+
+<section
+    id="monitoring"
+    class="panel page-section"
+    style="margin-top:20px;"
+>
+
+    <div class="panel-header">
+
+        <h2>
+            Monitoring
+        </h2>
+
+        <span>
+            Amazon CloudWatch
+        </span>
+
+    </div>
+
+
+    <div class="info-grid">
+
+        <div class="info-card">
+
+            <h3>
+                CPU Monitoring
+            </h3>
+
+            <p>
+                DeployGuard monitors the EC2 CPU utilization
+                using the CloudWatch alarm
+                DeployGuard-High-CPU.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h3>
+                Alarm Threshold
+            </h3>
+
+            <p>
+                The configured alarm triggers when average
+                EC2 CPU utilization reaches the defined
+                threshold across the evaluation periods.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h3>
+                Current Status
+            </h3>
+
+            <p id="monitoringStatus">
+                Checking CloudWatch...
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     STORAGE
+===================================================== -->
+
+<section
+    id="storage"
+    class="panel page-section"
+    style="margin-top:20px;"
+>
+
+    <div class="panel-header">
+
+        <h2>
+            Storage
+        </h2>
+
+        <span>
+            Amazon S3
+        </span>
+
+    </div>
+
+
+    <div class="info-grid">
+
+        <div class="info-card">
+
+            <h3>
+                Private Object Storage
+            </h3>
+
+            <p>
+                DeployGuard uses a private S3 bucket for
+                application profile images and cloud assets.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h3>
+                Security
+            </h3>
+
+            <p>
+                Public access is blocked and objects are
+                protected using server-side encryption.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h3>
+                Versioning
+            </h3>
+
+            <p>
+                S3 versioning is enabled to protect against
+                accidental object replacement or deletion.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DATABASE
+===================================================== -->
+
+<section
+    id="database"
+    class="panel page-section"
+    style="margin-top:20px;"
+>
+
+    <div class="panel-header">
+
+        <h2>
+            Database
+        </h2>
+
+        <span>
+            Amazon RDS PostgreSQL
+        </span>
+
+    </div>
+
+
+    <div class="info-grid">
+
+        <div class="info-card">
+
+            <h3>
+                Application Metadata
+            </h3>
+
+            <p>
+                Application names, developer information,
+                repository URLs, types and deployment state
+                are stored in PostgreSQL.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h3>
+                Private Database
+            </h3>
+
+            <p>
+                The database is not publicly accessible.
+                Access is restricted through the EC2 security
+                group.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h3>
+                Backups
+            </h3>
+
+            <p>
+                Automated RDS backups are enabled to support
+                recovery from accidental data loss.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SECURITY
+===================================================== -->
+
+<section
+    id="security"
+    class="panel page-section"
+    style="margin-top:20px;"
+>
+
+    <div class="panel-header">
+
+        <h2>
+            Security
+        </h2>
+
+        <span>
+            AWS security controls
+        </span>
+
+    </div>
+
+
+    <div class="info-grid">
+
+        <div class="info-card">
+
+            <h3>
+                IAM Role
+            </h3>
+
+            <p>
+                The EC2 instance uses an IAM role instead of
+                storing AWS access keys inside the application.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h3>
+                Security Groups
+            </h3>
+
+            <p>
+                EC2 traffic is restricted and the RDS database
+                accepts connections only from the EC2 security
+                group.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h3>
+                S3 Protection
+            </h3>
+
+            <p>
+                S3 Block Public Access is enabled and the
+                application accesses the bucket through IAM
+                permissions.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
 </main>
 
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script>
 
 
 // ============================================================
+// NAVIGATION
+// ============================================================
+
+function navigateTo(sectionId) {
+
+    const element =
+        document.getElementById(
+            sectionId
+        );
+
+    if (!element) {
+        return;
+    }
+
+    element.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+    });
+
+
+    document
+        .querySelectorAll(
+            ".nav-item"
+        )
+        .forEach(
+            item =>
+                item.classList.remove(
+                    "active"
+                )
+        );
+
+
+    event.currentTarget
+        .classList.add(
+            "active"
+        );
+}
+
+
+// ============================================================
 // LOAD APPLICATIONS
 // ============================================================
+
+let applicationsCache = [];
+
 
 async function loadApplications() {
 
@@ -1613,6 +1584,10 @@ async function loadApplications() {
             await response.json();
 
 
+        applicationsCache =
+            applications;
+
+
         document
             .getElementById(
                 "totalApplications"
@@ -1623,8 +1598,8 @@ async function loadApplications() {
 
         const registered =
             applications.filter(
-                application =>
-                    application.deployment_status
+                app =>
+                    app.deployment_status
                     === "Registered"
             ).length;
 
@@ -1639,7 +1614,7 @@ async function loadApplications() {
 
         const container =
             document.getElementById(
-                "applications"
+                "applicationsList"
             );
 
 
@@ -1667,61 +1642,35 @@ async function loadApplications() {
 
 
         container.innerHTML =
-            applications.map(
-                application => {
-
+            applications
+            .map(
+                app => {
 
                     const initial =
                         (
-                            application.name
+                            app.name
                             || "A"
                         )
                         .charAt(0)
                         .toUpperCase();
 
 
-                    const status =
-                        application
-                            .deployment_status
-                        || "Registered";
-
-
-                    let avatar;
-
-
-                    if (
-                        application.profile_picture
-                    ) {
-
-                        /*
-                         * Bucket is private, so we do
-                         * not directly expose the S3 URL.
-                         *
-                         * For now use generated avatar.
-                         */
-
-                        avatar = `
-                            <div class="avatar">
-                                ${initial}
-                            </div>
-                        `;
-
-                    } else {
-
-                        avatar = `
-                            <div class="avatar">
-                                ${initial}
-                            </div>
-                        `;
-
-                    }
-
-
                     return `
 
-                        <div class="application">
+                        <div
+                            class="application"
+                            onclick="
+                                showApplication(
+                                    ${app.id}
+                                )
+                            "
+                        >
 
-                            ${avatar}
+                            <div class="avatar">
+
+                                ${initial}
+
+                            </div>
 
 
                             <div class="app-info">
@@ -1729,7 +1678,7 @@ async function loadApplications() {
                                 <div class="app-name">
 
                                     ${escapeHtml(
-                                        application.name
+                                        app.name
                                     )}
 
                                 </div>
@@ -1738,52 +1687,41 @@ async function loadApplications() {
                                 <div class="app-meta">
 
                                     ${escapeHtml(
-                                        application
-                                            .application_type
-                                        || "Application"
+                                        app.application_type
+                                        ||
+                                        "Application"
                                     )}
 
                                     ·
 
                                     ${escapeHtml(
-                                        application
-                                            .developer
-                                        || "Unknown developer"
+                                        app.developer
+                                        ||
+                                        "Unknown"
                                     )}
 
                                 </div>
-
-
-                                ${
-                                    application.repository
-                                    ?
-                                    `
-                                    <a
-                                        class="repository-link"
-                                        href="${escapeHtml(
-                                            application.repository
-                                        )}"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        View Repository →
-                                    </a>
-                                    `
-                                    :
-                                    ""
-                                }
 
                             </div>
 
 
                             <div class="status">
 
-                                <div class="status-dot"></div>
+                                <div
+                                    class="status-dot"
+                                ></div>
 
                                 ${escapeHtml(
-                                    status
+                                    app.deployment_status
+                                    ||
+                                    "Registered"
                                 )}
 
+                            </div>
+
+
+                            <div class="app-arrow">
+                                →
                             </div>
 
                         </div>
@@ -1791,21 +1729,18 @@ async function loadApplications() {
                     `;
 
                 }
-            ).join("");
+            )
+            .join("");
 
     }
 
-    catch (error) {
+    catch(error) {
 
-        console.error(
-            "Applications error:",
-            error
-        );
-
+        console.error(error);
 
         document
             .getElementById(
-                "applications"
+                "applicationsList"
             )
             .innerHTML = `
 
@@ -1814,7 +1749,7 @@ async function loadApplications() {
                     padding:20px 0;
                 ">
 
-                    Unable to connect to application database.
+                    Unable to load applications.
 
                 </div>
 
@@ -1826,7 +1761,209 @@ async function loadApplications() {
 
 
 // ============================================================
-// LOAD AWS INFRASTRUCTURE
+// SHOW APPLICATION DETAILS
+// ============================================================
+
+function showApplication(
+    applicationId
+) {
+
+    const app =
+        applicationsCache.find(
+            application =>
+                application.id
+                === applicationId
+        );
+
+
+    if (!app) {
+        return;
+    }
+
+
+    const details =
+        document.getElementById(
+            "applicationDetails"
+        );
+
+
+    const content =
+        document.getElementById(
+            "detailsContent"
+        );
+
+
+    content.innerHTML = `
+
+        <div class="detail-box">
+
+            <div class="detail-label">
+                Application Name
+            </div>
+
+            <div class="detail-value">
+                ${escapeHtml(
+                    app.name
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="detail-box">
+
+            <div class="detail-label">
+                Developer
+            </div>
+
+            <div class="detail-value">
+                ${escapeHtml(
+                    app.developer
+                    || "-"
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="detail-box">
+
+            <div class="detail-label">
+                Email
+            </div>
+
+            <div class="detail-value">
+                ${escapeHtml(
+                    app.email
+                    || "-"
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="detail-box">
+
+            <div class="detail-label">
+                Application Type
+            </div>
+
+            <div class="detail-value">
+                ${escapeHtml(
+                    app.application_type
+                    || "-"
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="detail-box">
+
+            <div class="detail-label">
+                Status
+            </div>
+
+            <div
+                class="detail-value"
+                style="color:#35d39a;"
+            >
+                ●
+                ${escapeHtml(
+                    app.deployment_status
+                    || "Registered"
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="detail-box">
+
+            <div class="detail-label">
+                Application ID
+            </div>
+
+            <div class="detail-value">
+                #${app.id}
+            </div>
+
+        </div>
+
+
+        <div class="detail-box">
+
+            <div class="detail-label">
+                Repository
+            </div>
+
+            <div class="detail-value">
+                ${escapeHtml(
+                    app.repository
+                    || "-"
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="detail-box">
+
+            <div class="detail-label">
+                Registered
+            </div>
+
+            <div class="detail-value">
+                ${formatDate(
+                    app.created_at
+                )}
+            </div>
+
+        </div>
+
+
+        ${
+            app.repository
+            ?
+            `
+                <div style="
+                    grid-column:1/-1;
+                ">
+
+                    <a
+                        class="repo-button"
+                        href="${escapeHtml(
+                            app.repository
+                        )}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Open GitHub Repository →
+                    </a>
+
+                </div>
+            `
+            :
+            ""
+        }
+
+    `;
+
+
+    details.style.display =
+        "block";
+
+
+    details.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+    });
+
+}
+
+
+// ============================================================
+// LOAD INFRASTRUCTURE
 // ============================================================
 
 async function loadInfrastructure() {
@@ -1839,29 +1976,8 @@ async function loadInfrastructure() {
             );
 
 
-        if (!response.ok) {
-
-            throw new Error(
-                "Infrastructure request failed"
-            );
-
-        }
-
-
-        const infrastructure =
+        const infra =
             await response.json();
-
-
-        // ----------------------------------------------------
-        // Update top cards
-        // ----------------------------------------------------
-
-        const s3Status =
-            infrastructure.s3.status;
-
-
-        const rdsStatus =
-            infrastructure.rds.status;
 
 
         document
@@ -1877,7 +1993,7 @@ async function loadInfrastructure() {
                 "storageSub"
             )
             .textContent =
-            s3Status;
+            infra.s3.status;
 
 
         document
@@ -1893,67 +2009,58 @@ async function loadInfrastructure() {
                 "databaseSub"
             )
             .textContent =
-            rdsStatus;
+            infra.rds.status;
 
-
-        // ----------------------------------------------------
-        // Infrastructure cards
-        // ----------------------------------------------------
 
         const services = [
 
             {
-                key: "ec2",
-                icon: "EC2",
-                name: "Compute"
+                key:"ec2",
+                icon:"EC2",
+                name:"Compute"
             },
 
             {
-                key: "rds",
-                icon: "DB",
-                name: "PostgreSQL"
+                key:"rds",
+                icon:"DB",
+                name:"PostgreSQL"
             },
 
             {
-                key: "alb",
-                icon: "LB",
-                name: "Load Balancer"
+                key:"alb",
+                icon:"LB",
+                name:"Load Balancer"
             },
 
             {
-                key: "s3",
-                icon: "S3",
-                name: "Object Storage"
+                key:"s3",
+                icon:"S3",
+                name:"Object Storage"
             },
 
             {
-                key: "cloudwatch",
-                icon: "CW",
-                name: "Monitoring"
+                key:"cloudwatch",
+                icon:"CW",
+                name:"Monitoring"
             }
 
         ];
 
 
-        const container =
-            document.getElementById(
-                "infrastructure"
-            );
+        document
+            .getElementById(
+                "infrastructureList"
+            )
+            .innerHTML =
 
-
-        container.innerHTML =
-            services.map(
+            services
+            .map(
                 service => {
 
-
                     const data =
-                        infrastructure[
+                        infra[
                             service.key
                         ];
-
-
-                    const status =
-                        data.status;
 
 
                     const healthy =
@@ -1962,8 +2069,9 @@ async function loadInfrastructure() {
                             "Connected",
                             "Available",
                             "OK"
-                        ].includes(
-                            status
+                        ]
+                        .includes(
+                            data.status
                         );
 
 
@@ -1971,8 +2079,9 @@ async function loadInfrastructure() {
                         [
                             "Stopped",
                             "Not Configured"
-                        ].includes(
-                            status
+                        ]
+                        .includes(
+                            data.status
                         );
 
 
@@ -1981,16 +2090,12 @@ async function loadInfrastructure() {
 
 
                     if (healthy) {
-
                         statusClass =
                             "healthy";
-
                     }
                     else if (warning) {
-
                         statusClass =
                             "warning";
-
                     }
 
 
@@ -2017,7 +2122,6 @@ async function loadInfrastructure() {
                                         ${service.name}
                                     </div>
 
-
                                     <div
                                         class="service-description"
                                     >
@@ -2040,7 +2144,7 @@ async function loadInfrastructure() {
 
                                 ●
                                 ${escapeHtml(
-                                    status
+                                    data.status
                                 )}
 
                             </div>
@@ -2050,34 +2154,24 @@ async function loadInfrastructure() {
                     `;
 
                 }
-            ).join("");
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "Infrastructure error:",
-            error
-        );
+            )
+            .join("");
 
 
         document
             .getElementById(
-                "infrastructure"
+                "monitoringStatus"
             )
-            .innerHTML = `
+            .textContent =
+            "CloudWatch alarm status: "
+            +
+            infra.cloudwatch.status;
 
-                <div style="
-                    color:#ff6b7a;
-                    padding:20px 0;
-                ">
+    }
 
-                    Unable to retrieve AWS infrastructure status.
+    catch(error) {
 
-                </div>
-
-            `;
+        console.error(error);
 
     }
 
@@ -2096,7 +2190,6 @@ document
         "submit",
         async function(event) {
 
-
             event.preventDefault();
 
 
@@ -2112,73 +2205,69 @@ document
                 );
 
 
-            button.disabled = true;
+            button.disabled =
+                true;
 
             button.textContent =
                 "Registering...";
 
 
-            message.className =
-                "message";
-
-            message.style.display =
-                "none";
-
-
             try {
-
-
-                // ------------------------------------------------
-                // Collect form data
-                // ------------------------------------------------
 
                 const data = {
 
                     name:
-                        document.getElementById(
+                        document
+                        .getElementById(
                             "name"
-                        ).value.trim(),
+                        )
+                        .value
+                        .trim(),
 
                     developer:
-                        document.getElementById(
+                        document
+                        .getElementById(
                             "developer"
-                        ).value.trim(),
+                        )
+                        .value
+                        .trim(),
 
                     email:
-                        document.getElementById(
+                        document
+                        .getElementById(
                             "email"
-                        ).value.trim(),
+                        )
+                        .value
+                        .trim(),
 
                     repository:
-                        document.getElementById(
+                        document
+                        .getElementById(
                             "repository"
-                        ).value.trim(),
+                        )
+                        .value
+                        .trim(),
 
                     type:
-                        document.getElementById(
+                        document
+                        .getElementById(
                             "type"
-                        ).value
+                        )
+                        .value
 
                 };
 
-
-                // ------------------------------------------------
-                // Send application to Flask
-                // ------------------------------------------------
 
                 const response =
                     await fetch(
                         "/applications",
                         {
 
-                            method:
-                                "POST",
+                            method:"POST",
 
-                            headers: {
-
+                            headers:{
                                 "Content-Type":
                                     "application/json"
-
                             },
 
                             body:
@@ -2205,20 +2294,17 @@ document
                 }
 
 
-                // ------------------------------------------------
-                // Upload profile picture to S3
-                // ------------------------------------------------
+                // Profile → S3
 
                 const profile =
                     document
-                        .getElementById(
-                            "profile"
-                        )
-                        .files[0];
+                    .getElementById(
+                        "profile"
+                    )
+                    .files[0];
 
 
                 if (profile) {
-
 
                     const formData =
                         new FormData();
@@ -2236,35 +2322,16 @@ document
                     );
 
 
-                    const upload =
-                        await fetch(
-                            "/upload-profile",
-                            {
-
-                                method:
-                                    "POST",
-
-                                body:
-                                    formData
-
-                            }
-                        );
-
-
-                    if (!upload.ok) {
-
-                        console.warn(
-                            "Profile picture upload failed"
-                        );
-
-                    }
+                    await fetch(
+                        "/upload-profile",
+                        {
+                            method:"POST",
+                            body:formData
+                        }
+                    );
 
                 }
 
-
-                // ------------------------------------------------
-                // Success
-                // ------------------------------------------------
 
                 message.className =
                     "message success";
@@ -2281,20 +2348,21 @@ document
                 this.reset();
 
 
-                // Refresh dashboard
-
                 await loadApplications();
 
-                await loadInfrastructure();
+
+                // Automatically open
+                // the new application
+
+                showApplication(
+                    result.id
+                );
 
             }
 
-            catch (error) {
+            catch(error) {
 
-                console.error(
-                    "Registration error:",
-                    error
-                );
+                console.error(error);
 
 
                 message.className =
@@ -2302,9 +2370,7 @@ document
 
 
                 message.textContent =
-                    error.message
-                    ||
-                    "Something went wrong.";
+                    error.message;
 
 
                 message.style.display =
@@ -2313,7 +2379,9 @@ document
             }
 
 
-            button.disabled = false;
+            button.disabled =
+                false;
+
 
             button.textContent =
                 "+ Register Application";
@@ -2323,15 +2391,13 @@ document
 
 
 // ============================================================
-// HTML ESCAPING
+// HELPERS
 // ============================================================
 
 function escapeHtml(value) {
 
     if (!value) {
-
         return "";
-
     }
 
 
@@ -2365,6 +2431,30 @@ function escapeHtml(value) {
 }
 
 
+function formatDate(value) {
+
+    if (!value) {
+        return "-";
+    }
+
+
+    try {
+
+        return new Date(
+            value
+        ).toLocaleString();
+
+    }
+
+    catch {
+
+        return value;
+
+    }
+
+}
+
+
 // ============================================================
 // INITIAL LOAD
 // ============================================================
@@ -2374,9 +2464,8 @@ loadApplications();
 loadInfrastructure();
 
 
-// ============================================================
-// REFRESH AWS STATUS EVERY 30 SECONDS
-// ============================================================
+// Refresh AWS infrastructure
+// every 30 seconds
 
 setInterval(
     loadInfrastructure,
