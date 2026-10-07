@@ -1,9 +1,9 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 import os
 import psycopg2
 from psycopg2.extras import RealDictCursor
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="frontend")
 
 
 def get_db_connection():
@@ -25,8 +25,12 @@ def init_db():
         CREATE TABLE IF NOT EXISTS applications (
             id SERIAL PRIMARY KEY,
             name VARCHAR(100) NOT NULL,
+            developer VARCHAR(100),
+            email VARCHAR(150),
             repository VARCHAR(255),
-            status VARCHAR(50) DEFAULT 'Running'
+            application_type VARCHAR(50),
+            status VARCHAR(50) DEFAULT 'Running',
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     """)
 
@@ -37,11 +41,7 @@ def init_db():
 
 @app.route("/")
 def home():
-    return jsonify({
-        "application": "DeployGuard",
-        "status": "running",
-        "message": "Cloud Native Deployment Platform"
-    })
+    return send_from_directory("frontend", "index.html")
 
 
 @app.route("/health")
@@ -65,10 +65,25 @@ def health():
 
 @app.route("/applications", methods=["GET"])
 def get_applications():
+
     conn = get_db_connection()
+
     cur = conn.cursor(cursor_factory=RealDictCursor)
 
-    cur.execute("SELECT * FROM applications ORDER BY id")
+    cur.execute("""
+        SELECT
+            id,
+            name,
+            developer,
+            email,
+            repository,
+            application_type,
+            status,
+            created_at
+        FROM applications
+        ORDER BY id DESC
+    """)
+
     applications = cur.fetchall()
 
     cur.close()
@@ -79,38 +94,84 @@ def get_applications():
 
 @app.route("/applications", methods=["POST"])
 def create_application():
-    data = request.json
+
+    data = request.get_json()
 
     name = data.get("name")
+    developer = data.get("developer")
+    email = data.get("email")
     repository = data.get("repository")
+    application_type = data.get("type")
 
     if not name:
-        return jsonify({"error": "Application name is required"}), 400
+        return jsonify({
+            "error": "Application name is required"
+        }), 400
 
     conn = get_db_connection()
+
     cur = conn.cursor()
 
-    cur.execute(
-        """
-        INSERT INTO applications (name, repository)
-        VALUES (%s, %s)
+    cur.execute("""
+        INSERT INTO applications
+        (
+            name,
+            developer,
+            email,
+            repository,
+            application_type
+        )
+        VALUES (%s, %s, %s, %s, %s)
         RETURNING id
-        """,
-        (name, repository)
-    )
+    """, (
+        name,
+        developer,
+        email,
+        repository,
+        application_type
+    ))
 
     app_id = cur.fetchone()[0]
 
     conn.commit()
+
     cur.close()
     conn.close()
 
     return jsonify({
-        "message": "Application created",
+        "message": "Application registered",
         "id": app_id
     }), 201
 
 
+@app.route("/stats")
+def stats():
+
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute("SELECT COUNT(*) FROM applications")
+    total = cur.fetchone()[0]
+
+    cur.execute(
+        "SELECT COUNT(*) FROM applications WHERE status = 'Running'"
+    )
+    running = cur.fetchone()[0]
+
+    cur.close()
+    conn.close()
+
+    return jsonify({
+        "total": total,
+        "running": running
+    })
+
+
 if __name__ == "__main__":
+
     init_db()
-    app.run(host="0.0.0.0", port=5000)
+
+    app.run(
+        host="0.0.0.0",
+        port=5000
+    )
