@@ -1,28 +1,59 @@
 services:
 
   backend:
-    build: ./backend
+
+    build:
+      context: ./backend
+
     environment:
+
       DB_HOST: ${DB_HOST}
+
       DB_NAME: ${DB_NAME}
+
       DB_USER: ${DB_USER}
+
       DB_PASSWORD: ${DB_PASSWORD}
+
       DB_PORT: ${DB_PORT}
+
       DB_SSLMODE: require
+
+      AWS_REGION: ap-south-2
+
+      S3_BUCKET: deployguard-storage-2026-anush-373700524873-ap-south-2-an
+
+      EC2_INSTANCE_NAME: DeployGuard-Server
+
+      ALB_NAME: deployguard-alb
+
+      CLOUDWATCH_ALARM_NAME: DeployGuard-High-CPU
+
     networks:
       - internal
+
     restart: unless-stopped
+
 
   nginx:
-    build: ./nginx
+
+    build:
+      context: ./nginx
+
     ports:
       - "80:80"
+
     depends_on:
       - backend
+
     networks:
       - internal
+
     restart: unless-stopped
 
+
 networks:
+
   internal:
+
     driver: bridge
