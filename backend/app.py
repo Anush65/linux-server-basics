@@ -12,7 +12,8 @@ def get_db_connection():
         database=os.getenv("DB_NAME", "deployguard"),
         user=os.getenv("DB_USER", "admin"),
         password=os.getenv("DB_PASSWORD", "admin123"),
-        port=5432
+        port=int(os.getenv("DB_PORT", "5432")),
+        sslmode=os.getenv("DB_SSLMODE", "prefer")
     )
 
 
