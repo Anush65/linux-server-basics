@@ -14,3 +14,5 @@ certs/
 letsencrypt/
 
 docker-compose.yml
+config.bat
+node_modules
