@@ -9,4 +9,3 @@ __pycache__/
 # OS / editor
 .DS_Store
 node_modules
-config.bat
